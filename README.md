@@ -2,4 +2,4 @@
 Source code for our fifth semester compiler design project.
 
 Contents:
-1. cs6109_project_abstract.docx -> The project abstract, as a document.
+1. cs6109_project_abstract_old.docx -> Old project abstract for rejected idea.
