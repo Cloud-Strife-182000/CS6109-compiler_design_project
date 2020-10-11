@@ -3,7 +3,7 @@
 #include<stdio.h>
 #include<string.h>
 
-char pets[500], sports[500], food[500], fruits[500], vegetables[500], misc[500];
+char pets[500], sports[500], food[500], fruits[500], vegetables[500];
 char verbs[500];
 
 char pets_db[][500] = {"dog", "cat", "pitbull", "terrier", "dalmatian", "tabby", "kitten", "puppy"};
@@ -19,7 +19,10 @@ char fruits_db[][500] = {"mango","apple","kiwifruit","jackfruit","banana","water
 
 char vegetables_db[][500] = {"cucumber","tomato","potato","pumpkin","lettuce","beetroot","carrot","yam","cabbage"};
 
-int i, flag;
+char users[][500] = {};
+
+int i, flag, user_count;
+int temp_counter;
 
 void CompareAndAdd(char *str, char strarr[][500], int size)
 {
@@ -32,6 +35,36 @@ void CompareAndAdd(char *str, char strarr[][500], int size)
 			flag = 1;
 		}
 	}
+}
+
+void AllocateToUser(char *str)
+{
+	i = 0;
+	temp_counter = 1;
+
+	printf("For %s: ",users[temp_counter]);
+
+	while(str[i] != '\0')
+	{
+		if(str[i] == '-')
+		{
+			temp_counter++;
+			printf("\nFor %s: ",users[temp_counter]);
+			i++;
+		}
+		else if(str[i] == '$')
+		{
+			printf(" ");
+			i++;
+		}
+		else
+		{
+			printf("%c",str[i]);
+			i++;
+		}
+	}
+
+	printf("\n");
 }
 
 %}
@@ -52,13 +85,23 @@ void CompareAndAdd(char *str, char strarr[][500], int size)
 
 		if(flag == 0)
 		{
-			strcat(misc, yytext);
-			misc[strlen(misc)] = '$';
+			strcpy(users[user_count], yytext);
 		}
 		
 	   }
 
-[\n\t ] ;
+[\n] {
+	strcat(pets,"-$");
+	strcat(sports,"-$");
+	strcat(verbs,"-$");
+	strcat(fruits,"-$");
+	strcat(vegetables,"-$");
+
+	user_count++;
+     }
+
+[\t ] ;
+
 . ;
 
 -1 return 0;
@@ -69,6 +112,8 @@ int main()
 FILE *ptr=fopen("input.txt","r");
 yyin=ptr;
 
+user_count = 1;
+
 yylex();
 
 printf("\nPets Registered: %s\n",pets);
@@ -76,7 +121,20 @@ printf("Sports Registered: %s\n",sports);
 printf("Fruits Registered: %s\n",fruits);
 printf("Vegetables Registered: %s\n",vegetables);
 printf("Actions Registered: %s\n",verbs);
-printf("Miscellaneous(names and such): %s\n",misc);
+
+printf("\nNumber of Users: %d\n",user_count);
+
+printf("\nPets allocated to Users: \n");
+AllocateToUser(pets);
+printf("\nSports allocated to Users: \n");
+AllocateToUser(sports);
+printf("\nFruits allocated to Users: \n");
+AllocateToUser(fruits);
+printf("\nVegetables allocated to Users: \n");
+AllocateToUser(vegetables);
+printf("\nActions allocated to Users: \n");
+AllocateToUser(verbs);
 
 return 0;
+
 }
