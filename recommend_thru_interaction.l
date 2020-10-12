@@ -52,7 +52,12 @@ void AllocateToUser(char *str)
 		if(str[i] == '-')
 		{
 			temp_counter++;
-			printf("\nFor %s: ",users[temp_counter]);
+
+			if(temp_counter <= user_count)
+			{
+				printf("\nFor %s: ",users[temp_counter]);
+			}
+
 			i++;
 		}
 		else if(str[i] == '$')
