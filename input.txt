@@ -1,4 +1,5 @@
-Vivek: I like to play cricket.
-Tharun: He jumped over the tabby cat.
-Srikanth: I ate a cabbage and a watermelon.
-Deepak: I love eating mango.
+Ramesh: I like to play cricket.
+Gokul: He jumped over the tabby cat.
+Ravi: I ate a cabbage and a watermelon.
+Suresh: I love eating mango.
+Vijay: I like to read books.
