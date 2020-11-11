@@ -9,6 +9,8 @@ Main:
 5. project_cd.jpg -> Architecture diagram for our compiler
 6. recommender-system-cd-project.ipynb -> Python notebook for the project implementation
 
+Link to the Kaggle Notebook(with the datasets) -> https://www.kaggle.com/danoozy44/recommender-system-cd-project
+
 
 
 Old Contents:
